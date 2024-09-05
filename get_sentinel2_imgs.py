@@ -22,7 +22,7 @@ def get_image(cloud_coverage, sampling_date, coords):
     """
     
     # Compute date range
-    sampling_date_from = datetime.strptime(sampling_date, "%Y-%m-%d") - timedelta(days=10) # ten days behind the sampling date
+    sampling_date_from = datetime.strptime(sampling_date, "%Y-%m-%d") - timedelta(days=10) # ten days before the sampling date
     sampling_date_from = sampling_date_from.strftime("%Y-%m-%d")
     sampling_date_to = sampling_date
 
