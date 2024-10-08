@@ -34,8 +34,8 @@ def main():
         try:
             print(f"Removing invalid coordinate values for farm {farm} (if any), please wait...")
             columns_to_check = ["Longitude", "Latitude"]
-            df_farm = df_farm.loc[(df_farm[columns_to_check] > 0).all(axis=1)]
-            df_farm = df_farm.loc[(df_farm[columns_to_check] != None).all(axis=1)]
+            df_farm = df_farm.loc[(df_farm[columns_to_check] > 0).all(axis = 1)]
+            df_farm = df_farm.loc[(df_farm[columns_to_check] != None).all(axis = 1)]
             print("Done.\n")
 
             lng_min = round(df_farm["Longitude"].min(), 6)
@@ -51,8 +51,8 @@ def main():
 
             print(f"Removing invalid coordinate values for farm {farm} (if any), please wait...")
             columns_to_check = ["Longitude", "Latitude"]
-            df_farm = df_farm.loc[(df_farm[columns_to_check] > 0).all(axis=1)]
-            df_farm = df_farm.loc[(df_farm[columns_to_check] != None).all(axis=1)]
+            df_farm = df_farm.loc[(df_farm[columns_to_check] > 0).all(axis = 1)]
+            df_farm = df_farm.loc[(df_farm[columns_to_check] != None).all(axis = 1)]
             print("Done.\n")
 
             lng_min = round(df_farm["Longitude"].min(), 6)
@@ -111,7 +111,7 @@ def main():
             df_pixels_indexes["B11"] = b11
             df_pixels_indexes["B12"] = b12
 
-            df_satellite = pd.concat([df_satellite, df_pixels_indexes], ignore_index=True)
+            df_satellite = pd.concat([df_satellite, df_pixels_indexes], ignore_index = True)
 
             b02.clear()
             b03.clear()
@@ -128,28 +128,28 @@ def main():
 
     print("Computing vegetation indexes in progress, please wait...")
 
-    df_satellite["NDVI"] = df_satellite.apply(compute_NDVI, axis=1)
-    df_satellite["NDWI"] = df_satellite.apply(compute_NDWI, axis=1)
-    df_satellite["SAVI"] = df_satellite.apply(compute_SAVI, axis=1)
-    df_satellite["SIPI"] = df_satellite.apply(compute_SIPI, axis=1)
-    df_satellite["ARVI"] = df_satellite.apply(compute_ARVI, axis=1)
+    df_satellite["NDVI"] = df_satellite.apply(compute_NDVI, axis = 1)
+    df_satellite["NDWI"] = df_satellite.apply(compute_NDWI, axis = 1)
+    df_satellite["SAVI"] = df_satellite.apply(compute_SAVI, axis = 1)
+    df_satellite["SIPI"] = df_satellite.apply(compute_SIPI, axis = 1)
+    df_satellite["ARVI"] = df_satellite.apply(compute_ARVI, axis = 1)
 
-    df_satellite["NBR"] = df_satellite.apply(compute_NBR, axis=1)
-    df_satellite["EVI"] = df_satellite.apply(compute_EVI, axis=1)
-    df_satellite["GLI"] = df_satellite.apply(compute_GLI, axis=1)
-    df_satellite["GCI"] = df_satellite.apply(compute_GCI, axis=1)
-    df_satellite["RGR"] = df_satellite.apply(compute_RGR, axis=1)
+    df_satellite["NBR"] = df_satellite.apply(compute_NBR, axis = 1)
+    df_satellite["EVI"] = df_satellite.apply(compute_EVI, axis = 1)
+    df_satellite["GLI"] = df_satellite.apply(compute_GLI, axis = 1)
+    df_satellite["GCI"] = df_satellite.apply(compute_GCI, axis = 1)
+    df_satellite["RGR"] = df_satellite.apply(compute_RGR, axis = 1)
 
     print("Done.\n")
     print("Retrieving elevation data, please wait...")
 
     df_complete = get_elevation(df_satellite)
-    df_complete.drop(columns="PixelsIndexes", inplace=True)
+    df_complete.drop(columns = "PixelsIndexes", inplace = True)
 
     print("Elevation data retrieved.\n")
     print("Determining seasons, please wait...")
 
-    df_complete["ReadingDate"] = pd.to_datetime(df_complete["ReadingDate"], format="%Y-%m-%d")
+    df_complete["ReadingDate"] = pd.to_datetime(df_complete["ReadingDate"], format = "%Y-%m-%d")
     df_complete["Season"] = df_complete["ReadingDate"].apply(get_season)
 
     print("Seasons determined.\n")
@@ -197,7 +197,7 @@ def main():
     ]
 
     timestamp = datetime.now().strftime("%Y-%m-%d")
-    df_complete.to_csv(f"output_{timestamp}.csv", index=False)
+    df_complete.to_csv(f"output_{timestamp}.csv", index = False)
 
     print("CSV file successfully saved, end!")
 

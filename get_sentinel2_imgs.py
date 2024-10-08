@@ -21,32 +21,32 @@ def get_image(cloud_coverage, sampling_date, coords):
         io.BytesIO: Image data as a BytesIO object if successful, None otherwise.
     """
     
-    # Compute date range
-    sampling_date_from = datetime.strptime(sampling_date, "%Y-%m-%d") - timedelta(days=10) # ten days before the sampling date
+    # compute date range
+    sampling_date_from = datetime.strptime(sampling_date, "%Y-%m-%d") - timedelta(days = 10) # ten days before the sampling date
     sampling_date_from = sampling_date_from.strftime("%Y-%m-%d")
     sampling_date_to = sampling_date
 
-    # Define bounding box and image size
-    bbox = BBox(bbox=coords, crs=CRS.WGS84)
+    # define bounding box and image size
+    bbox = BBox(bbox = coords, crs = CRS.WGS84)
     resolution = 20
-    size = bbox_to_dimensions(bbox, resolution=resolution)
+    size = bbox_to_dimensions(bbox, resolution = resolution)
 
-    # Get OAuth2 token
+    # get OAuth2 token
     client_id = os.getenv("SENTINEL_CLIENT_ID")
     client_secret = os.getenv("SENTINEL_CLIENT_SECRET")
     
     if not client_id or not client_secret:
         raise ValueError("Client and Secret IDs must be set in environment variables.")
 
-    client = BackendApplicationClient(client_id=client_id)
-    oauth = OAuth2Session(client=client)
+    client = BackendApplicationClient(client_id = client_id)
+    oauth = OAuth2Session(client = client)
     oauth.fetch_token(
-        token_url="https://identity.dataspace.copernicus.eu/auth/realms/CDSE/protocol/openid-connect/token",
-        client_secret=client_secret,
-        include_client_id=True
+        token_url = "https://identity.dataspace.copernicus.eu/auth/realms/CDSE/protocol/openid-connect/token",
+        client_secret = client_secret,
+        include_client_id = True
     )
 
-    # Define the evalscript
+    # define the evalscript
     evalscript = """
     //VERSION=3
     function setup() {
@@ -77,7 +77,7 @@ def get_image(cloud_coverage, sampling_date, coords):
     }
     """
 
-    # Prepare the request
+    # request
     request = {
         "input": {
             "bounds": {
@@ -114,7 +114,7 @@ def get_image(cloud_coverage, sampling_date, coords):
     url = "https://sh.dataspace.copernicus.eu/api/v1/process"
     
     try:
-        response = oauth.post(url, json=request)
+        response = oauth.post(url, json = request)
         response.raise_for_status()
 
         img = io.BytesIO(response.content)

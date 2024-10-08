@@ -3,7 +3,7 @@ def compute_NDVI(row):
     Computes the Normalized Difference Vegetation Index (NDVI).
 
     Args:
-        row (pd.Series): Row of a DataFrame containing the necessary band values.
+        row (pd.Series): Row of a dataframe containing the necessary band values.
 
     Returns:
         float: NDVI value.
@@ -19,7 +19,7 @@ def compute_NDWI(row):
     Computes the Normalized Difference Water Index (NDWI).
 
     Args:
-        row (pd.Series): Row of a DataFrame containing the necessary band values.
+        row (pd.Series): Row of a dataframe containing the necessary band values.
 
     Returns:
         float: NDWI value.
@@ -35,7 +35,7 @@ def compute_EVI(row):
     Computes the Enhanced Vegetation Index (EVI).
 
     Args:
-        row (pd.Series): Row of a DataFrame containing the necessary band values.
+        row (pd.Series): Row of a dataframe containing the necessary band values.
 
     Returns:
         float: EVI value.
@@ -51,7 +51,7 @@ def compute_GLI(row):
     Computes the Green Leaf Index (GLI).
 
     Args:
-        row (pd.Series): Row of a DataFrame containing the necessary band values.
+        row (pd.Series): Row of a dataframe containing the necessary band values.
 
     Returns:
         float: GLI value.
@@ -67,7 +67,7 @@ def compute_SAVI(row):
     Computes the Soil Adjusted Vegetation Index (SAVI).
 
     Args:
-        row (pd.Series): Row of a DataFrame containing the necessary band values.
+        row (pd.Series): Row of a dataframe containing the necessary band values.
 
     Returns:
         float: SAVI value.
@@ -83,7 +83,7 @@ def compute_GCI(row):
     Computes the Green Chlorophyll Index (GCI).
 
     Args:
-        row (pd.Series): Row of a DataFrame containing the necessary band values.
+        row (pd.Series): Row of a dataframe containing the necessary band values.
 
     Returns:
         float: GCI value.
@@ -99,7 +99,7 @@ def compute_RGR(row):
     Computes the Red-Green Ratio (RGR).
 
     Args:
-        row (pd.Series): Row of a DataFrame containing the necessary band values.
+        row (pd.Series): Row of a dataframe containing the necessary band values.
 
     Returns:
         float: RGR value.
@@ -115,7 +115,7 @@ def compute_SIPI(row):
     Computes the Soil-Adjusted Vegetation Index (SIPI).
 
     Args:
-        row (pd.Series): Row of a DataFrame containing the necessary band values.
+        row (pd.Series): Row of a dataframe containing the necessary band values.
 
     Returns:
         float: SIPI value.
@@ -131,7 +131,7 @@ def compute_ARVI(row):
     Computes the Atmospherically Resistant Vegetation Index (ARVI).
 
     Args:
-        row (pd.Series): Row of a DataFrame containing the necessary band values.
+        row (pd.Series): Row of a dataframe containing the necessary band values.
 
     Returns:
         float: ARVI value.
@@ -147,7 +147,7 @@ def compute_NBR(row):
     Computes the Normalized Burn Ratio (NBR).
 
     Args:
-        row (pd.Series): Row of a DataFrame containing the necessary band values.
+        row (pd.Series): Row of a dataframe containing the necessary band values.
 
     Returns:
         float: NBR value.
